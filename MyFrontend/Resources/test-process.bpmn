@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:modeler="http://camunda.org/schema/modeler/1.0" xmlns:zeebe="http://camunda.org/schema/zeebe/1.0" xmlns:camunda="http://camunda.org/schema/1.0/bpmn" id="Definitions_1" targetNamespace="http://bpmn.io/schema/bpmn" exporter="Camunda Web Modeler" exporterVersion="faf7aad" modeler:executionPlatform="Camunda Cloud" modeler:executionPlatformVersion="8.2.0" camunda:diagramRelationId="667ac9ca-23a9-48b1-9ed3-b995b209acc2">
+  <bpmn:process id="test-process" name="process" isExecutable="true">
+    <bpmn:startEvent id="StartEvent_1">
+      <bpmn:outgoing>Flow_0bgtemd</bpmn:outgoing>
+    </bpmn:startEvent>
+    <bpmn:intermediateThrowEvent id="Event_12yy958">
+      <bpmn:incoming>Flow_02yahea</bpmn:incoming>
+    </bpmn:intermediateThrowEvent>
+    <bpmn:serviceTask id="get-weather" name="get weather">
+      <bpmn:extensionElements>
+        <zeebe:taskDefinition type="get-weather" />
+      </bpmn:extensionElements>
+      <bpmn:incoming>Flow_0bgtemd</bpmn:incoming>
+      <bpmn:outgoing>Flow_02yahea</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:sequenceFlow id="Flow_0bgtemd" sourceRef="StartEvent_1" targetRef="get-weather" />
+    <bpmn:sequenceFlow id="Flow_02yahea" sourceRef="get-weather" targetRef="Event_12yy958" />
+  </bpmn:process>
+  <bpmndi:BPMNDiagram id="BPMNDiagram_1">
+    <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="test-process">
+      <bpmndi:BPMNShape id="_BPMNShape_StartEvent_2" bpmnElement="StartEvent_1">
+        <dc:Bounds x="150" y="100" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_12yy958_di" bpmnElement="Event_12yy958">
+        <dc:Bounds x="632" y="100" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_17l16ho_di" bpmnElement="get-weather">
+        <dc:Bounds x="360" y="78" width="100" height="80" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="Flow_0bgtemd_di" bpmnElement="Flow_0bgtemd">
+        <di:waypoint x="186" y="118" />
+        <di:waypoint x="360" y="118" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_02yahea_di" bpmnElement="Flow_02yahea">
+        <di:waypoint x="460" y="118" />
+        <di:waypoint x="632" y="118" />
+      </bpmndi:BPMNEdge>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+</bpmn:definitions>
